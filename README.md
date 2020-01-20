@@ -1,4 +1,7 @@
 # Project Overview
+
+## Member
+Zekun Li 8520399, Richard Guan 300019165
  
 ## Idea
 Online Personal Budget
