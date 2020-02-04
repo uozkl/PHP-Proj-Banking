@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      body, html {
+        height: 100%;
+        margin: 0;
+        font-family: Cambay;
+      }
+
+      .bgimg {
+        background-image: url('Image/desk_2.jpg');
+        height: 100%;
+        background-position: center;
+        background-size: cover;
+        position: relative;
+      }
+
+      h2 {
+        color: #006331
+      }
+
+      ::placeholder {
+        color: #65997f
+      }
+
+      input[type=text], input[type=password] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 6px 0;
+        display: inline-block;
+        border: 2px solid #ccc;
+        box-sizing: border-box;
+      }
+
+      button {
+        background-color: #00b058;
+        color: white;
+        padding: 13px 21px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 34px;
+        cursor: pointer;
+        min-width: 150px;
+        font-size: 18px;
+      }
+
+      button:hover {
+        background-color: #3ddb8c;
+        color: white;
+      }
+
+      .container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 55px;
+        outline: 13px solid #006114;
+      }
+
+      span.psw {
+        float: right;
+        padding-top: 21px;
+        padding-left: 21px;
+      }
+
+      a {
+        color: #048745
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class = "bgimg">
+
+      <div class="container" style="background-color:#f5f9f7">
+        <h2>LOGIN</h2>
+        <label for="uName"><b>Username</b></label>
+          <br>
+          <input type="text" placeholder="Enter Username" name="uName" required>
+        <br>
+          <label for="pWord"><b>Password</b></label>
+          <br>
+          <input type="password" placeholder="Enter Password" name="pWord" required>
+        <br>
+        <button type="enter">Login</button>
+        <span class="psw"> <a href="">Forgot password?</a></span>
+      </div>
+    </div>
+  </body>
+</html>
