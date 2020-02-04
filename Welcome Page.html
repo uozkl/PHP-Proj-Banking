@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body, html {
+        height: 100%;
+        margin: 0;
+      }
+
+      .bgIMG {
+        background-image: url('Image/office_2.jpg');
+        height: 100%;
+        background-position: center;
+        background-size: cover;
+        position: relative;
+        color: white;
+        font-family: Cambay;
+        font-size: 25px;
+      }
+
+      .topLeft {
+        position: absolute;
+        top: 0;
+        left: 13px;
+      }
+
+      .bottomLeft {
+        position: absolute;
+        bottom: 0;
+        left: 13px;
+      }
+
+      .middle {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+      }
+
+      hr {
+        width: 62%;
+      }
+
+      button {
+        background-color: #00b058;
+        color: white;
+        padding: 13px 21px;
+        margin: 34px 0;
+        border: none;
+        border-radius: 34px;
+        cursor: pointer;
+        min-width: 135px;
+        width: 15%;
+        font-size: 18px;
+      }
+
+      button:hover {
+        background-color: white;
+        color: #00b058;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="bgIMG">
+      <div class="topLeft">
+        <p>TBA</p>
+      </div>
+      <div class="middle">
+        <h1>The Future of Banking</h1>
+        <hr>
+        <button type="toLoginBTN">Login</button>
+      </div>
+      <div class="bottomLeft">
+        <p>CSI 3140</p>
+      </div>
+    </div>
+  </body>
+</html>
