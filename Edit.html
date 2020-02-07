@@ -51,5 +51,72 @@
                 </div>
             </div>
         </section>
+        <section class="contact_us sec-padd-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-sm-12 col-xs-12">
+                        <div class="section-title">
+                            <br>
+                            <h3>Edit your transition record</h3>
+                        </div>
+                        <div class="default-form-area">
+                            <form id="contact-form" name="contact_form" class="default-form" action="inc/sendmail.php" method="post" novalidate="novalidate">
+                                <div class="row clearfix">
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        
+                                        <div class="form-group">
+                                            <h3>Transition Date</h3>
+                                            <input type="date" name="form_name" class="form-control" value="" placeholder="Transition Date" required="" aria-required="true">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <div class="form-group">
+                                            <h3>Transition Type</h3>
+                                            <select name="select2">
+                                                <option value="option1">Purchase</option>
+                                                <option value="option1">Deposit</option>
+                                                <option value="option1">Investment</option>
+                                                <option value="option1">Others</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <div class="form-group">
+                                            <h3>Source/Destination</h3>
+                                            <input type="text" name="form_phone" class="form-control" value="" placeholder="To/From ...">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <div class="form-group">
+                                            <h3>Amount</h3>
+                                            <input type="number" name="form_subject" class="form-control" value="" placeholder="0.0">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            <H3>Note</H3>
+                                            <textarea name="form_message" class="form-control textarea required" placeholder="Your Message...." aria-required="true"></textarea>
+                                        </div>
+                                    </div>   
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            <input id="form_botcheck" name="form_botcheck" class="form-control" type="hidden" value="">
+                                            <button class="thm-btn2" type="submit" data-loading-text="Please wait...">Save</button>
+                                        </div>
+                                    </div>   
+        
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-8 col-xs-12">
+                        <div class="home-google-map">
+                            <div class="google-map" id="contact-google-map" data-map-lat="40.938541" data-map-lng="-73.904893" data-icon-path="images/logo/map-marker.png" data-map-title="Chester" data-map-zoom="11">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </body>
 </html>
