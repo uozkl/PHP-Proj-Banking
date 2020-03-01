@@ -89,7 +89,7 @@ $card_number = $summary[$card_index]['number'];
                                     echo '                            
                                         <tr>
                                         <th scope="row">
-                                            <span><a href="Edit.php"> '.$tran['transaction_name'].' </a></span>
+                                            <span><a href="Edit.php?trans='.$tran['transaction_id'] .'"> '.$tran['transaction_name'].' </a></span>
                                         </th>
                                         <td>
                                             <ul><li> <span class=""> '.substr($tran['transaction_date'],0,4).'/'.substr($tran['transaction_date'],4,2).'/'.substr($tran['transaction_date'],6,2).' </span> </li></ul>
