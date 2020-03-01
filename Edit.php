@@ -1,6 +1,7 @@
 <?php
 require('db_fetch.php');
 $this_trans_id = $_GET['trans'];
+setcookie('this_tran_id', $this_trans_id);
 $tran_info = pg_fetch_all(pg_query($db_connection,"select * from transaction_info where transaction_id= $this_trans_id"))[0];
 $format_date = substr($tran_info['transaction_date'],0,4).'-'.substr($tran_info['transaction_date'],4,2).'-'.substr($tran_info['transaction_date'],6,2);
 
@@ -41,7 +42,7 @@ echo '<pre>'; print_r($format_date); echo '</pre>';
             <div class="row">
                 <div class="col-md-4">
                     <div class="main-logo">
-                        <a href="main.html"><img src="image/logo_small.PNG" alt=""></a>
+                        <a href="Main.php"><img src="image/logo_small.PNG" alt=""></a>
                     </div>
                 </div>
             </div>
@@ -70,7 +71,7 @@ echo '<pre>'; print_r($format_date); echo '</pre>';
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <div class="form-group">
                                         <h3>Transition Type</h3>
-                                        <input type="text" name="source_des" class="form-control" value="<?php echo $tran_info['transaction_type']?>"
+                                        <input type="text" name="trans_type" class="form-control" value="<?php echo $tran_info['transaction_type']?>"
                                             placeholder="Type of transaction">
                                     </div>
                                 </div>
@@ -145,7 +146,7 @@ echo '<pre>'; print_r($format_date); echo '</pre>';
         var r = confirm("Do you really want to cancel your changes?")
         if (r == true) {
             window.event.returnValue = false;
-            window.location.href = "Detail.html";
+            window.location.href = "Detail.php";
         }
     }
 </script>

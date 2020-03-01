@@ -35,7 +35,7 @@ require('db_fetch.php');
             <div class="row">
                 <div class="col-md-4">
                     <div class="main-logo">
-                        <a href="main.php"><img src="image/logo_small.PNG" alt=""></a>
+                        <a href="Main.php"><img src="image/logo_small.PNG" alt=""></a>
                     </div>
                 </div>
             </div>

@@ -1,15 +1,15 @@
 <?php  
 require('db_connect.php');
-	
 // Assigning POST values to variables.
-$id = $GET['trans'];
+$id = $_COOKIE['this_id'];
 $date = $_POST['trans_date'];
-$transition = $_POST['transition'];
 $inflow = $_POST['in_flow'];
 $outflow = $_POST['out_flow'];
+$type = $_POST['trans_type'];
 
-$query = "INSERT INTO transaction_info(transaction_id, transaction_date, transaction_type, transaction_outflow, transaction_inflow) VALUES ($id, '$date', '$transition', '$outflow', '$inflow')";
+$query = "UPDATE transaction_info SET transaction_type='$type',transaction_outflow='$outflow',transaction_inflow='$inflow' where transaction_id=$id";
 
 pg_query($db_connection, $query);
-
+echo "<script type='text/javascript'>alert('Successful')</script>";
+echo "<script> window.location.href = 'Main.php' </script>";
 ?>
