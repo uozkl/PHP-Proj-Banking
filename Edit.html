@@ -31,7 +31,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="main-logo">
-                        <a href="main.php"><img src="image/logo_small.PNG" alt=""></a>
+                        <a href="main.html"><img src="image/logo_small.PNG" alt=""></a>
                     </div>
                 </div>
             </div>
@@ -46,39 +46,46 @@
                         <h3>Edit your transition record</h3>
                     </div>
                     <div class="default-form-area">
-                        <form id="contact-form" name="contact_form" class="default-form" method="post"
+                        <form id="contact-form" name="contact_form" class="default-form" action="edit_edit.php" method="post"
                             novalidate="novalidate">
                             <div class="row clearfix">
                                 <div class="col-md-6 col-sm-6 col-xs-12">
 
                                     <div class="form-group">
                                         <h3>Transition Date</h3>
-                                        <input type="date" name="form_name" class="form-control" value=""
+                                        <input type="date" name="trans_date" class="form-control" value=""
                                             placeholder="Transition Date" required="" aria-required="true">
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <div class="form-group">
                                         <h3>Transition Type</h3>
-                                        <select name="select2">
-                                            <option value="option1">Purchase</option>
-                                            <option value="option1">Deposit</option>
-                                            <option value="option1">Investment</option>
-                                            <option value="option1">Others</option>
+                                        <select name="transition">
+                                            <option value="Purchase">Purchase</option>
+                                            <option value="Deposit">Deposit</option>
+                                            <option value="Investment">Investment</option>
+                                            <option value="Others">Others</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <div class="form-group">
                                         <h3>Source/Destination</h3>
-                                        <input type="text" name="form_phone" class="form-control" value=""
+                                        <input type="text" name="source_des" class="form-control" value=""
                                             placeholder="To/From ...">
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <div class="form-group">
-                                        <h3>Amount</h3>
-                                        <input type="number" name="form_subject" class="form-control" value=""
+                                        <h3>In Flow</h3>
+                                        <input type="number" name="in_flow" class="form-control" value=""
+                                            placeholder="0.0">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group">
+                                        <h3>Out Flow</h3>
+                                        <input type="number" name="out_flow" class="form-control" value=""
                                             placeholder="0.0">
                                     </div>
                                 </div>
@@ -93,7 +100,7 @@
                                     <div class="form-group">
                                         <input id="form_botcheck" name="form_botcheck" class="form-control"
                                             type="hidden" value="">
-                                        <a href="Detail.html" onclick="alert('Change Saved')" class="thm-btn2">Save</a>
+                                        <button class="thm-btn2" type="submit">Save</button>
                                         <button class="thm-btn2" onclick="btn_exit()">Cancel</button>
                                     </div>
                                 </div>
