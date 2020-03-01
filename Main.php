@@ -1,6 +1,5 @@
 <?php
 require('db_fetch.php');
-print_r($summary)
 ?>
 <html>
 

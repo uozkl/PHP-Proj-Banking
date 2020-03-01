@@ -17,7 +17,7 @@ if ($count == 1){
 
 //echo "Login Credentials verified";
 echo "<script type='text/javascript'>alert('Login Credentials verified')</script>";
-setcookie('this_id', pg_fetch_all($result)['user_id']);
+setcookie('this_id', pg_fetch_all($result)[0]['user_id']);
 
 echo "<script> window.location.href = 'Main.php' </script>";
 
