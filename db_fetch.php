@@ -16,7 +16,7 @@ for ($i=0; $i<sizeof($card_res); $i++)
 {
     array_push($id_mapping,$card_res[$i]["card_id"]);
 }
-$id_mapping = array_unique($id_mapping);
+$id_mapping = array_values(array_unique($id_mapping));
 
 $summary = array();
 for ($i=0; $i<sizeof($id_mapping); $i++)
