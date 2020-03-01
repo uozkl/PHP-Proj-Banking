@@ -5,7 +5,7 @@
 -- Dumped from database version 9.6.17
 -- Dumped by pg_dump version 12.0
 
--- Started on 2020-02-29 21:20:44
+-- Started on 2020-02-29 23:23:10
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -29,6 +29,7 @@ COPY public.account (user_id, user_name, user_passwd, user_fname, user_lname, us
 2	user2	user2	John	Doe	Male	1112225544	331 Test Street	user2@test.com
 3	user3	user3	Jane	Doe	Female	9996665555	5534 Test Street	user3@test.com
 7	newuser	1234	new	user	option1	123123123	123 xxx street	newuser@gmail.com
+4	use2	use2						
 \.
 
 
@@ -58,19 +59,19 @@ COPY public.card_info (card_id, user_id, card_type, card_number) FROM stdin;
 -- Data for Name: transaction_info; Type: TABLE DATA; Schema: public; Owner: root
 --
 
-COPY public.transaction_info (transaction_id, card_id, transaction_name, transaction_date, transaction_type, transaction_outflow, transaction_inflow) FROM stdin;
-2	2	AA	20201103	\N	\N	20
-3	3	SS	20191101	\N	85	\N
-4	4	ZZ	20180605	\N	12	\N
-5	5	XX	20190706	\N	333	\N
-6	6	EE	20130516	\N	\N	15
-7	1	Junk	20200202	Withdraw	542	\N
-8	1	Another Junk	20200715	\N	77	12
-1	1	No Title	20200105	Deposit	\N	150
+COPY public.transaction_info (transaction_id, card_id, transaction_name, transaction_date, transaction_type, transaction_outflow, transaction_inflow, transaction_dest, transaction_note) FROM stdin;
+3	3	SS	20191101	Payment	85	\N	Joe	\N
+4	4	ZZ	20180605	Bill	12	\N	Jack	\N
+5	5	XX	20190706	Bill	333	\N	Jame	\N
+7	1	Junk	20200202	Deposit	542	\N	Ann	\N
+8	1	Another Junk	20200715	Withdraw	77	12	Gov	\N
+2	2	AA	20201103	Withdraw	\N	20	Jane	\N
+1	1	No Title	20200105	Withdraw	77112	1222	Store	\N
+6	6	EE	20130516	Bill	55	77	Jone	\N
 \.
 
 
--- Completed on 2020-02-29 21:20:44
+-- Completed on 2020-02-29 23:23:11
 
 --
 -- PostgreSQL database dump complete
