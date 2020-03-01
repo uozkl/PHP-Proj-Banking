@@ -1,3 +1,6 @@
+<?php
+require('db_fetch.php');
+?>
 <html>
 
 <head>
@@ -16,7 +19,7 @@
                         <li>
                             <h3>Good morning </h3>
                         </li>
-                        <li>Mr.John Smith</li>
+                        <li><?php echo $name?></li>
                     </ul>
                 </div>
                 <div class="col-right float_right">
@@ -60,37 +63,33 @@
                                 <th scope="col">Account Name</th>
                                 <th scope="col">Balance</th>
                             </tr>
-                            <tr>
-                                <th scope="row">
-                                    <a href="Detail.html">
-                                        Credit card 1</span></a>
-                                    <br>
-                                    <span> Visa 4444******** 9999 </span>
-                                </th>
-                                <td>
-                                    <ul>
-                                        <li> <span class=""> $333.33 </span> </li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    <a href="Detail.html">Credit card 2</span></a>
-                                    <br>
-                                    <span> Visa 4444******** 9999 </span>
-                                </th>
-                                <td>
-                                    <ul>
-                                        <li> <span class=""> $666.66 </span> </li>
-                                    </ul>
-                                </td>
-                            </tr>
+                            <?php
+                                for ($i=0; $i<sizeof($summary); $i++)
+                                {
+                                    if($summary[$i]['type']=='Credit'){
+                                        echo '                            
+                                        <tr>
+                                        <th scope="row">
+                                            <a href="Detail.php?card='.$summary[$i]['id'] .'">
+                                                account '.$i.'</span></a>
+                                            <br>
+                                            <span> '. $summary[$i]['number'].' </span>
+                                        </th>
+                                        <td>
+                                            <ul>
+                                                <li> <span class=""> $'. $summary[$i]['balance']. ' </span> </li>
+                                            </ul>
+                                        </td>
+                                    </tr>';
+                                    }
+                                }
+                            ?>
 
                             <tr class="totalRow">
                                 <td>
                                 </td>
                                 <td><span class="total">Total:</span>
-                                    <ul> <span>$999.99</span> </ul>
+                                    <ul> <span>$<?php echo $credit_total ?></span> </ul>
                                 </td>
                             </tr>
                         </tbody>
@@ -107,38 +106,32 @@
                                 <th scope="col">Account Name</th>
                                 <th scope="col">Balance</th>
                             </tr>
-                            <tr>
-                                <th scope="row">
-                                    <a href="Detail.html">
-                                        Credit card 1</span></a>
-                                    <br>
-                                    <span> Visa 4444******** 9999 </span>
-                                </th>
-                                <td>
-                                    <ul>
-                                        <li> <span class=""> $333.33 </span> </li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    <a href="Detail.html">
-                                        Credit card 2</span></a>
-                                    <br>
-                                    <span> Visa 4444******** 9999 </span>
-                                </th>
-                                <td>
-                                    <ul>
-                                        <li> <span class=""> $666.66 </span> </li>
-                                    </ul>
-                                </td>
-                            </tr>
-
+                            <?php
+                                for ($i=0; $i<sizeof($summary); $i++)
+                                {
+                                    if($summary[$i]['type']=='Savings'){
+                                        echo '                            
+                                        <tr>
+                                        <th scope="row">
+                                            <a href="Detail.php?card='.$summary[$i]['id'] .'">
+                                                Account '.$i.'</span></a>
+                                            <br>
+                                            <span> '. $summary[$i]['number'].' </span>
+                                        </th>
+                                        <td>
+                                            <ul>
+                                                <li> <span class=""> $'. $summary[$i]['balance']. ' </span> </li>
+                                            </ul>
+                                        </td>
+                                    </tr>';
+                                    }
+                                }
+                            ?>
                             <tr class="totalRow">
                                 <td>
                                 </td>
                                 <td><span class="total">Total:</span>
-                                    <ul> <span>$999.99</span> </ul>
+                                    <ul> <span>$<?php echo $savings_total ?></span> </ul>
                                 </td>
                             </tr>
                         </tbody>
@@ -155,38 +148,33 @@
                                 <th scope="col">Account Name</th>
                                 <th scope="col">Balance</th>
                             </tr>
-                            <tr>
-                                <th scope="row">
-                                    <a href="Detail.html">
-                                        Credit card 1</span></a>
-                                    <br>
-                                    <span> Visa 4444******** 9999 </span>
-                                </th>
-                                <td>
-                                    <ul>
-                                        <li> <span class=""> $333.33 </span> </li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    <a href="Detail.html">
-                                        Credit card 2</span></a>
-                                    <br>
-                                    <span> Visa 4444******** 9999 </span>
-                                </th>
-                                <td>
-                                    <ul>
-                                        <li> <span class=""> $666.66 </span> </li>
-                                    </ul>
-                                </td>
-                            </tr>
+                            <?php
+                                for ($i=0; $i<sizeof($summary); $i++)
+                                {
+                                    if($summary[$i]['type']=='Cash'){
+                                        echo '                            
+                                        <tr>
+                                        <th scope="row">
+                                            <a href="Detail.php?card='.$summary[$i]['id'] .'">
+                                                account '.$i.'</span></a>
+                                            <br>
+                                            <span> '. $summary[$i]['number'].' </span>
+                                        </th>
+                                        <td>
+                                            <ul>
+                                                <li> <span class=""> $'. $summary[$i]['balance']. ' </span> </li>
+                                            </ul>
+                                        </td>
+                                    </tr>';
+                                    }
+                                }
+                            ?>
 
                             <tr class="totalRow">
                                 <td>
                                 </td>
                                 <td><span class="total">Total:</span>
-                                    <ul> <span>$999.99</span> </ul>
+                                    <ul> <span>$<?php echo $cash_total ?></span> </ul>
                                 </td>
                             </tr>
                         </tbody>
@@ -203,38 +191,33 @@
                                 <th scope="col">Account Name</th>
                                 <th scope="col">Balance</th>
                             </tr>
-                            <tr>
-                                <th scope="row">
-                                    <a href="Detail.html">
-                                        Credit card 1</span></a>
-                                    <br>
-                                    <span> Visa 4444******** 9999 </span>
-                                </th>
-                                <td>
-                                    <ul>
-                                        <li> <span class=""> $333.33 </span> </li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    <a href="Detail.html">
-                                        Credit card 2</span></a>
-                                    <br>
-                                    <span> Visa 4444******** 9999 </span>
-                                </th>
-                                <td>
-                                    <ul>
-                                        <li> <span class=""> $666.66 </span> </li>
-                                    </ul>
-                                </td>
-                            </tr>
+                            <?php
+                                for ($i=0; $i<sizeof($summary); $i++)
+                                {
+                                    if($summary[$i]['type']=='Loan'){
+                                        echo '                            
+                                        <tr>
+                                        <th scope="row">
+                                            <a href="Detail.php?card='.$summary[$i]['id'] .'">
+                                                account '.$i.'</span></a>
+                                            <br>
+                                            <span> '. $summary[$i]['number'].' </span>
+                                        </th>
+                                        <td>
+                                            <ul>
+                                                <li> <span class=""> $'. $summary[$i]['balance']. ' </span> </li>
+                                            </ul>
+                                        </td>
+                                    </tr>';
+                                    }
+                                }
+                            ?>
 
                             <tr class="totalRow">
                                 <td>
                                 </td>
                                 <td><span class="total">Total:</span>
-                                    <ul> <span>$999.99</span> </ul>
+                                    <ul> <span>$<?php echo $loan_total ?></span> </ul>
                                 </td>
                             </tr>
                         </tbody>
