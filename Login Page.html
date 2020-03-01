@@ -9,6 +9,8 @@
         font-family: Cambay;
       }
 
+      form {}
+
       .bgimg {
         background-image: url('Image/desk_2.jpg');
         height: 100%;
@@ -34,7 +36,7 @@
         box-sizing: border-box;
       }
 
-      button {
+      input[type=submit] {
         background-color: #48c7ec;
         color: white;
         padding: 13px 21px;
@@ -46,7 +48,7 @@
         font-size: 18px;
       }
 
-      button:hover {
+      input[type=submit]:hover {
         background-color: black;
         color: #48c7ec;
       }
@@ -60,7 +62,7 @@
         outline: 13px solid #0087ad;
       }
 
-      span.psw {
+      span.rgs {
         float: right;
         padding-top: 21px;
         padding-left: 21px;
@@ -77,6 +79,7 @@
 
       <div class="container" style="background-color:#f5f9f7">
         <h2>LOGIN</h2>
+        <form action="authen_login.php" method="post">
         <label for="uName"><b>Username</b></label>
           <br>
           <input type="text" placeholder="Enter Username" name="uName" required>
@@ -85,14 +88,10 @@
           <br>
           <input type="password" placeholder="Enter Password" name="pWord" required>
         <br>
-        <button onclick="btn_login()">Login</button>
-        <span class="psw"> <a href="">Forgot password?</a></span>
+        <input type="submit" value="Login">
+        <span class="rgs"> <a href="register.html">Need an account?</a></span>
+        </form>
       </div>
     </div>
   </body>
-  <script>
-    function btn_login() {
-          window.location.href = "main.php";
-  }
-  </script>
 </html>

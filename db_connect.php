@@ -1,10 +1,9 @@
 <?php
-   $host        = "host=192.168.0.120";
-   $port        = "port=5432";
-   $dbname      = "dbname=web_proj";
-   $credentials = "user=user password=user";
-   $db_connection = pg_connect( "$host $port $dbname $credentials"  );
-   if(!$db_connection){
-      echo "Error : Unable to open database\n";
-   }
+/* Attempt to connect to database */
+$db_connection = pg_connect("host=zklhome.ddns.net dbname=web_proj user=user password=user");
+ 
+// Check connection
+if($db_connection === false){
+    die("ERROR: Could not connect. " . pg_error());
+}
 ?>
