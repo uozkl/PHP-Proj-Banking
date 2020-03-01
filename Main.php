@@ -1,5 +1,6 @@
 <?php
 require('db_fetch.php');
+print_r($summary)
 ?>
 <html>
 
@@ -35,7 +36,7 @@ require('db_fetch.php');
             <div class="row">
                 <div class="col-md-4">
                     <div class="main-logo">
-                        <a href="main.html"><img src="image/logo_small.PNG" alt=""></a>
+                        <a href="main.php"><img src="image/logo_small.PNG" alt=""></a>
                     </div>
                 </div>
             </div>
@@ -71,7 +72,7 @@ require('db_fetch.php');
                                         <tr>
                                         <th scope="row">
                                             <a href="Detail.php?card='.$summary[$i]['id'] .'">
-                                                account '.$i.'</span></a>
+                                                Account '.$summary[$i]['id'].'</span></a>
                                             <br>
                                             <span> '. $summary[$i]['number'].' </span>
                                         </th>
@@ -114,7 +115,7 @@ require('db_fetch.php');
                                         <tr>
                                         <th scope="row">
                                             <a href="Detail.php?card='.$summary[$i]['id'] .'">
-                                                Account '.$i.'</span></a>
+                                                Account '.$summary[$i]['id'].'</span></a>
                                             <br>
                                             <span> '. $summary[$i]['number'].' </span>
                                         </th>
@@ -156,7 +157,7 @@ require('db_fetch.php');
                                         <tr>
                                         <th scope="row">
                                             <a href="Detail.php?card='.$summary[$i]['id'] .'">
-                                                account '.$i.'</span></a>
+                                                account '.$summary[$i]['id'].'</span></a>
                                             <br>
                                             <span> '. $summary[$i]['number'].' </span>
                                         </th>
@@ -199,7 +200,7 @@ require('db_fetch.php');
                                         <tr>
                                         <th scope="row">
                                             <a href="Detail.php?card='.$summary[$i]['id'] .'">
-                                                account '.$i.'</span></a>
+                                                account '.$summary[$i]['id'].'</span></a>
                                             <br>
                                             <span> '. $summary[$i]['number'].' </span>
                                         </th>

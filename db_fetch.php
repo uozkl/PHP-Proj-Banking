@@ -21,7 +21,7 @@ $id_mapping = array_unique($id_mapping);
 $summary = array();
 for ($i=0; $i<sizeof($id_mapping); $i++)
 {
-    for ($j=0; $j<sizeof($card_res); $j++){
+    for ($j=0; $j<sizeof($id_mapping); $j++){
         if($card_res[$j]['card_id'] == $id_mapping[$i]){
             $tmp = $card_res[$j];
             array_push($summary,array("type"=>$tmp['card_type'],"number"=>$tmp['card_number'],"balance"=>0,"id"=>$tmp['card_id']));
@@ -55,4 +55,5 @@ for ($i=0; $i<sizeof($summary); $i++){
         $loan_total = $loan_total+$amount;
     }
 }
+//echo '<pre>'; print_r($summary); echo '</pre>';
 ?>

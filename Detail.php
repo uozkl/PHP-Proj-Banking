@@ -1,3 +1,20 @@
+<?php
+require('db_fetch.php');
+$this_card_id = $_GET['card'];
+$this_trans = array();
+$total_in = 0;
+$total_out = 0;
+for ($i=0; $i<sizeof($card_res); $i++)
+{
+    if($card_res[$i]["card_id"]==$this_card_id){
+        array_push($this_trans,$card_res[$i]);
+        $total_in=$total_in+$card_res[$i]['transaction_inflow'];
+        $total_out=$total_out+$card_res[$i]['transaction_outflow'];
+    }
+}
+$card_index = array_search($tmp['card_id'],$id_mapping);
+$card_number = $summary[$card_index]['number'];
+?>
 <html>
 
 <head>
@@ -15,7 +32,7 @@
                         <li>
                             <h3>Good morning </h3>
                         </li>
-                        <li>Mr.John Smith</li>
+                        <li><?php echo $name?></li>
                     </ul>
                 </div>
                 <div class="col-right float_right">
@@ -31,7 +48,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="main-logo">
-                        <a href="main.html"><img src="image/logo_small.PNG" alt=""></a>
+                        <a href="main.php"><img src="image/logo_small.PNG" alt=""></a>
                     </div>
                 </div>
             </div>
@@ -41,13 +58,13 @@
         <br>
         <section>
             <h2>Card</h2>
-            <caption class="accessible">Visa 4444******** 9999</caption>
+            <caption class="accessible"><?php echo $card_number?></caption>
         </section>
         <hr>
         <div>
             </section>
             <h3>Current Balance</h3>
-            <h4>$90.00</h4>
+            <h4>$<?php echo $total_in-$total_out?></h4>
             </section>
             <br>
             <section id="transactionList">
@@ -62,96 +79,50 @@
                             <th scope="col">Date</th>
                             <th scope="col">Out Flow</th>
                             <th scope="col">In Flow</th>
-                            <th scope="col">Balance</th>
 
                         </tr>
-                        <tr>
-                            <th scope="row">
-                                <span><a href="Edit.html"> SUBJECT_001 </a></span>
-                            </th>
-                            <td>
-                                <ul><li> <span class=""> 2020/2/5 </span> </li></ul>
-                            </td>
-                            <td>
-                                <ul><li> <span class=""> $10.00 </span> </li></ul>
-                            </td>
-                            <td>
-                                <ul><li> <span class=""> -- </span> </li></ul>
-                            </td>
-                            <td>
-                                <ul><li> <span class=""> $90.00 </span> </li></ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">
-                                <span><a href="Edit.html"> SUBJECT_001 </a></span>
-                            </th>
-                            <td>
-                                <ul><li> <span class=""> 2020/2/5 </span> </li></ul>
-                            </td>
-                            <td>
-                                <ul><li> <span class=""> $50.00 </span> </li></ul>
-                            </td>
-                            <td>
-                                <ul><li> <span class=""> -- </span> </li></ul>
-                            </td>
-                            <td>
-                                <ul><li> <span class=""> $10.00 </span> </li></ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">
-                                <span><a href="Edit.html"> SUBJECT_001 </a></span>
-                            </th>
-                            <td>
-                                <ul><li> <span class=""> 2020/2/5 </span> </li></ul>
-                            </td>
-                            <td>
-                                <ul><li> <span class=""> $10.00 </span> </li></ul>
-                            </td>
-                            <td>
-                                <ul><li> <span class=""> -- </span> </li></ul>
-                            </td>
-                            <td>
-                                <ul><li> <span class=""> $90.00 </span> </li></ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">
-                                <span><a href="Edit.html">ATM_007</a> </span>
-                            </th>
-                            <td>
-                                <ul>
-                                    <li> <span class=""> 2020/2/4 </span> </li>
-                                </ul>
-                            </td>
-                            <td>
-                                <ul>
-                                    <li> <span class=""> -- </span> </li>
-                                </ul>
-                            </td>
-                            <td>
-                                <ul>
-                                    <li> <span class=""> $100.00 </span> </li>
-                                </ul>
-                            </td>
-                            <td>
-                                <ul>
-                                    <li> <span class=""> $100.00 </span> </li>
-                                </ul>
-                            </td>
 
-                        </tr>
+                            <?php
+                                for ($i=0; $i<sizeof($this_trans); $i++)
+                                {
+                                    $tran = $this_trans[$i];
+                                    echo '                            
+                                        <tr>
+                                        <th scope="row">
+                                            <span><a href="Edit.php"> '.$tran['transaction_name'].' </a></span>
+                                        </th>
+                                        <td>
+                                            <ul><li> <span class=""> '.substr($tran['transaction_date'],0,4).'/'.substr($tran['transaction_date'],4,2).'/'.substr($tran['transaction_date'],6,2).' </span> </li></ul>
+                                        </td>
+                                        <td>
+                                            <ul><li> <span class=""> ';
+                                    $out_msg = '--';
+                                    $in_msg = '--';
+                                    if($tran['transaction_outflow']>0){
+                                        $out_msg = '$'.$tran['transaction_outflow'];
+                                    }
+                                    if($tran['transaction_inflow']>0){
+                                        $in_msg = '$'.$tran['transaction_inflow'];
+                                    }
+                                    
+                                    echo $out_msg.' </span> </li></ul>
+                                        </td>
+                                        <td>
+                                            <ul><li> <span class=""> '.$in_msg.' </span> </li></ul>
+                                        </td>
+                                        </tr>';
+                                }
+                            ?>
+
+
                         <tr class="totalRow">
                             <td></td>
                             <td></td>
                             <td><span class="total">Total:</span>
-                                <ul> <span>$10.00</span> </ul>
+                                <ul> <span>$<?php echo $total_out?></span> </ul>
                             </td>
                             <td><span class="total">Total:</span>
-                                <ul> <span>$100.00</span> </ul>
-                            </td>
-                            <td><span class=""></span>
+                                <ul> <span>$<?php echo $total_in?></span> </ul>
                             </td>
                         </tr>
                     </tbody>
