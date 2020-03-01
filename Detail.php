@@ -12,7 +12,7 @@ for ($i=0; $i<sizeof($card_res); $i++)
         $total_out=$total_out+$card_res[$i]['transaction_outflow'];
     }
 }
-$card_index = array_search($tmp['card_id'],$id_mapping);
+$card_index = array_search($tmp['card_id'],$mapping);
 $card_number = $summary[$card_index]['number'];
 ?>
 <html>

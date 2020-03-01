@@ -5,9 +5,6 @@ setcookie('this_tran_id', $this_trans_id);
 $tran_info = pg_fetch_all(pg_query($db_connection,"select * from transaction_info where transaction_id= $this_trans_id"))[0];
 $format_date = substr($tran_info['transaction_date'],0,4).'-'.substr($tran_info['transaction_date'],4,2).'-'.substr($tran_info['transaction_date'],6,2);
 
-echo '<pre>'; print_r($tran_info); echo '</pre>';
-echo '<pre>'; print_r($format_date); echo '</pre>';
-
 ?>
 <html>
 
