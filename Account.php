@@ -1,9 +1,9 @@
 <?php
 require('db_fetch.php');
+# Bool values for Options in the form
 $is_male = $account_res[0]['user_gender']=="Male";
 $is_female = $account_res[0]['user_gender']=="Female";
 $is_others = $account_res[0]['user_gender']=="Others";
-
 ?>
 <html>
 
@@ -14,6 +14,7 @@ $is_others = $account_res[0]['user_gender']=="Others";
 </head>
 
 <body>
+    <!-- The top UI component that displays a welcome message and the MY ACCOUNT link. -->
     <header class="top-bar">
         <div class="container">
             <div class="clearfix">
@@ -44,6 +45,7 @@ $is_others = $account_res[0]['user_gender']=="Others";
             </div>
         </div>
     </section>
+    <!-- Main body -->
     <div class="container">
         <br>
         <section>
@@ -51,17 +53,19 @@ $is_others = $account_res[0]['user_gender']=="Others";
             <caption class="accessible">Personal information</caption>
         </section>
         <hr>
+        <!-- General info edit -->
         <div class="default-form-area">
             <form id="contact-form" name="contact_form" class="default-form" method="post" action ="account_update.php" novalidate="novalidate">
                 <div class="row clearfix">
+                    <!-- First Name -->
                     <div class="col-md-6 col-sm-6 col-xs-12">
-
                         <div class="form-group">
                             <h3>First Name</h3>
                             <input type="text" name="fname" class="form-control" value="<?php echo $account_res[0]['user_fname']?>"
                                 placeholder="First name" required="" aria-required="true">
                         </div>
                     </div>
+                    <!-- Last Name -->
                     <div class="col-md-6 col-sm-6 col-xs-12">
                         <div class="form-group">
                             <h3>Last Name</h3>
@@ -69,6 +73,7 @@ $is_others = $account_res[0]['user_gender']=="Others";
                                 placeholder="Last name" required="" aria-required="true">
                         </div>
                     </div>
+                    <!-- Gendder -->
                     <div class="col-md-6 col-sm-6 col-xs-12">
                         <div class="form-group">
                             <h3>Gender</h3>
@@ -79,12 +84,14 @@ $is_others = $account_res[0]['user_gender']=="Others";
                             </select>
                         </div>
                     </div>
+                    <!-- Telephone -->
                     <div class="col-md-6 col-sm-6 col-xs-12">
                         <div class="form-group">
                             <h3>Telephone</h3>
                             <input type="text" name="tel" class="form-control" value="<?php echo $account_res[0]['user_tel']?>">
                         </div>
                     </div>
+                    <!-- Address -->
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="form-group">
                             <H3>Address</H3>
@@ -92,6 +99,7 @@ $is_others = $account_res[0]['user_gender']=="Others";
                                 placeholder="0.0">
                         </div>
                     </div>
+                    <!-- Email -->
                     <div class="col-md-6 col-sm-6 col-xs-12">
                         <div class="form-group">
                             <h3>Email</h3>
@@ -104,6 +112,7 @@ $is_others = $account_res[0]['user_gender']=="Others";
                 <button class="thm-btn2" type="submit">Save</button>
             </form>
         </div>
+        <!-- Card info -->
         <section>
             <table>
                 <tr>
@@ -122,7 +131,7 @@ $is_others = $account_res[0]['user_gender']=="Others";
                     <th scope="col">Balance</th>
                 </tr>
                 <tr>
-
+                    <!-- Build a list to display all the cards -->
                     <?php
                                 for ($i=0; $i<sizeof($summary); $i++)
                                 {
@@ -149,6 +158,7 @@ $is_others = $account_res[0]['user_gender']=="Others";
         </table>
 
     </div>
+    <!-- Footer, copyright, etc -->
     <section class="footer-bottom">
         <div class="container">
             <div class="pull-left copy-text">
@@ -164,13 +174,4 @@ $is_others = $account_res[0]['user_gender']=="Others";
         </div>
     </section>
 </body>
-<script>
-    function btn_exit() {
-        var r = confirm("Do you really want to cancel your changes?")
-        if (r == true) {
-            window.event.returnValue = false;
-            window.location.href = "Detail.php";
-        }
-    }
-</script>
 </html>

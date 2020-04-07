@@ -5,6 +5,7 @@ if ($this_card_id=="NEW") {
     $this_card_id=0;
 }
 setcookie('this_card_id', $this_card_id);
+# Bool values for Options in the form
 $card_info = pg_fetch_all(pg_query($db_connection, "select * from card_info where card_id= $this_card_id"))[0];
 $is_credit = $card_info['card_type']=="Credit";
 $is_cash = $card_info['card_type']=="Cash";
@@ -42,6 +43,7 @@ $is_loan = $card_info['card_type']=="Loan";
 </head>
 
 <body>
+    <!-- The top UI component that displays a welcome message and the MY ACCOUNT link. -->
     <header class="top-bar">
         <div class="container">
             <div class="clearfix">
@@ -81,6 +83,7 @@ $is_loan = $card_info['card_type']=="Loan";
                         <h3>Edit your card details</h3>
                     </div>
                     <div class="default-form-area">
+                        <!-- Card info edit form -->
                         <form id="contact-form" name="contact_form" class="default-form" action="card_update.php" method="post"
                             novalidate="novalidate">
                             <div class="row clearfix">
@@ -109,6 +112,7 @@ $is_loan = $card_info['card_type']=="Loan";
                                         </select>
                                     </div>
                                 </div>
+                                <!-- Buttons, save and cancel. If is not creating a new record, then the button delete will display -->
                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                     <div class="form-group">
                                         <input id="form_botcheck" name="form_botcheck" class="form-control"
