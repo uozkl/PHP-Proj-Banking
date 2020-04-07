@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<!-- Register page -->
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
@@ -84,26 +85,34 @@
   </head>
 
   <body>
+    <!-- Background image -->
     <div class = "bgimg">
+      <!-- The light blue container inthe middle of the page. -->
       <div class="container" style="background-color:#f5f9f7">
         <h2>Register</h2>
+        <!-- Register form -->
         <form action="reg_update.php" method="post">
+            <!-- Username label and input box. -->
           <label for="uName"><b>Username</b></label>
           <br>
           <input type="text" placeholder="Enter Username" name="uName" id="uName" required>
           <br>
+          <!-- Password label and input box. -->
           <label for="pWord"><b>Password</b></label>
           <br>
           <input type="password" placeholder="Enter Password" name="pWord" id="pWord" required>
           <br>
+          <!-- First name label and input box. -->
           <label for="fName"><b>First Name</b></label>
           <br>
           <input type="text" placeholder="Enter First Name" name="fName" id="fName" required>
           <br>
+          <!-- Last name label and input box. -->
           <label for="lName"><b>Last Name</b></label>
           <br>
           <input type="text" placeholder="Enter Last Name" name="lName" id="lName" required>
           <br>
+          <!-- Gender label and selection. -->
           <label for="gender"><b>Gender</b></label>
           <br>
           <select name="gender" id="gender">
@@ -112,19 +121,24 @@
             <option value="Others">Others</option>
           </select>
           <br>
+          <!-- Tele phone number label and input box. -->
           <label for="tlPhone"><b>Tele Phone</b></label>
           <br>
           <input type="text" placeholder="Enter Phone Number" name="tlPhone" id="tlPhone" required>
           <br>
+          <!-- Address label and input box. -->
           <label for="address"><b>Address</b></label>
           <br>
           <input type="text" placeholder="Enter Adress" name="address" id="address" required>
           <br>
+          <!-- Email label and input box. -->
           <label for="email"><b>Email</b></label>
           <br>
           <input type="text" placeholder="Enter Email" name="email" id="email" required>
           <br>
+          <!-- Register button; submits the form. -->
           <input type="submit" value="Register">
+          <!-- Link redirects to the login page. -->
           <span class="psw"> <a href="Login_Page.php">Return to Login</a></span>
         </form>
       </div>
