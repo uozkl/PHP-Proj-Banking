@@ -16,7 +16,7 @@ require('db_connect.php');
       form {}
 
       .bgimg {
-        background-image: url('Image/desk_2.jpg');
+        background-image: url('image/desk_2.jpg');
         height: 100%;
         background-position: center;
         background-size: cover;

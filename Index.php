@@ -14,7 +14,7 @@ It is a welcome page.
     }
 
     .bgIMG {
-      background-image: url('Image/office_2.jpg');
+      background-image: url('image/office_2.jpg');
       height: 100%;
       background-position: center;
       background-size: cover;
