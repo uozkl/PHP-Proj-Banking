@@ -77,7 +77,7 @@
 </body>
 <script>
   function btn_login() {
-          window.location.href = "Login Page.html";
+          window.location.href = "Login_Page.php";
   }
 </script>
 </html>

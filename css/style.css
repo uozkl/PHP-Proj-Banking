@@ -306,6 +306,26 @@ input,textarea {font-family: 'Hind', sans-serif;display: block; font-size: 16px;
   color: #fff;
   transition: all .5s cubic-bezier(0.4, 0, 1, 1);
 }
+.thm-btndel {
+    position: relative;
+    background: transparent;
+    font-size: 14px;
+    line-height: 46px;
+    font-weight: 600;
+    color: #ff5858;
+    border: 2px solid #f4f4f4;
+    text-transform: uppercase;
+    font-family: 'Poppins', sans-serif;
+    display: inline-block;
+    padding: 0 38px;
+    transition: all .5s cubic-bezier(0.4, 0, 1, 1);
+  }
+  .thm-btndel:hover {
+    background: #ff5858;
+    border-color: #ff5858;
+    color: #fff;
+    transition: all .5s cubic-bezier(0.4, 0, 1, 1);
+  }
 
 
 .thm-btn-tr {

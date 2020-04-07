@@ -1,3 +1,6 @@
+<?php
+require('db_connect.php');
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -79,19 +82,45 @@
 
       <div class="container" style="background-color:#f5f9f7">
         <h2>LOGIN</h2>
-        <form action="authen_login.php" method="post">
+        <form method="post">
         <label for="uName"><b>Username</b></label>
           <br>
-          <input type="text" placeholder="Enter Username" name="uName" required>
+          <input type="text" placeholder="Enter Username" name="uName" value = "" required>
         <br>
           <label for="pWord"><b>Password</b></label>
           <br>
           <input type="password" placeholder="Enter Password" name="pWord" required>
         <br>
         <input type="submit" value="Login">
-        <span class="rgs"> <a href="register.html">Need an account?</a></span>
+        <span class="rgs"> <a href="Register.php">Need an account?</a></span>
         </form>
       </div>
     </div>
   </body>
 </html>
+<?php
+    if (isset($_POST['uName']) and isset($_POST['pWord'])) {
+    // Assigning POST values to variables.
+        $username = $_POST['uName'];
+        $password = $_POST['pWord'];
+    
+        // CHECK FOR THE RECORD FROM TABLE
+        $query = "SELECT * FROM account WHERE user_name='$username' and user_passwd='$password'";
+    
+        $result = pg_query($db_connection, $query) or die(pg_error($db_connection));
+        $count = pg_num_rows($result);
+    
+        if ($count == 1) {
+        
+    //echo "Login Credentials verified";
+            echo "<script type='text/javascript'>alert('Login Credentials verified')</script>";
+            setcookie('this_id', pg_fetch_all($result)[0]['user_id']);
+        
+            echo "<script> window.location.href = 'Main.php' </script>";
+        } else {
+            echo "<script type='text/javascript'>alert('Invalid Login Credentials')</script>";
+            echo "<script> window.location.href = 'Login_Page.php' </script>";
+            //echo "Invalid Login Credentials";
+        }
+    }
+    ?>

@@ -1,13 +1,38 @@
 <?php
 require('db_fetch.php');
 $this_trans_id = $_GET['trans'];
+if ($this_trans_id=="NEW") {
+    $this_trans_id=0;
+}
 setcookie('this_tran_id', $this_trans_id);
-$tran_info = pg_fetch_all(pg_query($db_connection,"select * from transaction_info where transaction_id= $this_trans_id"))[0];
-$format_date = substr($tran_info['transaction_date'],0,4).'-'.substr($tran_info['transaction_date'],4,2).'-'.substr($tran_info['transaction_date'],6,2);
+$tran_info = pg_fetch_all(pg_query($db_connection, "select * from transaction_info where transaction_id= $this_trans_id"))[0];
+//print_r($tran_info);
+$format_date = substr($tran_info['transaction_date'], 0, 4).'-'.substr($tran_info['transaction_date'], 4, 2).'-'.substr($tran_info['transaction_date'], 6, 2);
 
 ?>
 <html>
-
+<style>
+.thm-btndel {
+    position: relative;
+    background: transparent;
+    font-size: 14px;
+    line-height: 46px;
+    font-weight: 600;
+    color: #ff5858;
+    border: 2px solid #f4f4f4;
+    text-transform: uppercase;
+    font-family: 'Poppins', sans-serif;
+    display: inline-block;
+    padding: 0 38px;
+    transition: all .5s cubic-bezier(0.4, 0, 1, 1);
+  }
+  .thm-btndel:hover {
+    background: #ff5858;
+    border-color: #ff5858;
+    color: #fff;
+    transition: all .5s cubic-bezier(0.4, 0, 1, 1);
+  }
+  </style>
 <head>
     <title>Edit item</title>
     <link rel="stylesheet" href="css/style.css">
@@ -67,6 +92,13 @@ $format_date = substr($tran_info['transaction_date'],0,4).'-'.substr($tran_info[
                                 </div>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <div class="form-group">
+                                        <h3>Transition Name</h3>
+                                        <input type="text" name="trans_name" class="form-control" value="<?php echo $tran_info['transaction_name']?>"
+                                            placeholder="Name of transaction">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group">
                                         <h3>Transition Type</h3>
                                         <input type="text" name="trans_type" class="form-control" value="<?php echo $tran_info['transaction_type']?>"
                                             placeholder="Type of transaction">
@@ -106,6 +138,7 @@ $format_date = substr($tran_info['transaction_date'],0,4).'-'.substr($tran_info[
                                             type="hidden" value="">
                                         <button class="thm-btn2" type="submit">Save</button>
                                         <button class="thm-btn2" onclick="btn_exit()">Cancel</button>
+                                        <?php if ($this_trans_id!=0) {echo '<button class="thm-btndel" onclick="btn_del()">Delete</button>';}?>
                                     </div>
                                 </div>
                             </div>
@@ -144,6 +177,13 @@ $format_date = substr($tran_info['transaction_date'],0,4).'-'.substr($tran_info[
         if (r == true) {
             window.event.returnValue = false;
             window.location.href = "Detail.php";
+        }
+    }
+    function btn_del() {
+        var r = confirm("Do you really want to delete this record?")
+        if (r == true) {
+            window.event.returnValue = false;
+            window.location.href = "edit_del.php";
         }
     }
 </script>

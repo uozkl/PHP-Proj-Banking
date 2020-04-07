@@ -1,6 +1,7 @@
 <?php
 require('db_fetch.php');
 $this_card_id = $_GET['card'];
+setcookie('this_card_id', $this_card_id);
 $this_trans = array();
 $total_in = 0;
 $total_out = 0;
@@ -96,8 +97,8 @@ $card_number = $summary[$card_index]['number'];
                                         </td>
                                         <td>
                                             <ul><li> <span class=""> ';
-                                    $out_msg = '--';
-                                    $in_msg = '--';
+                                    $out_msg = '$0';
+                                    $in_msg = '$0';
                                     if($tran['transaction_outflow']>0){
                                         $out_msg = '$'.$tran['transaction_outflow'];
                                     }
@@ -116,7 +117,7 @@ $card_number = $summary[$card_index]['number'];
 
 
                         <tr class="totalRow">
-                            <td></td>
+                            <td><a href="Edit.php?trans=NEW" class="thm-btn">add</a></td>
                             <td></td>
                             <td><span class="total">Total:</span>
                                 <ul> <span>$<?php echo $total_out?></span> </ul>
