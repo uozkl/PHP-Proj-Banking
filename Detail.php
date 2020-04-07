@@ -78,8 +78,8 @@ $card_number = $summary[$card_index]['number'];
                         <tr class="accessible">
                             <th scope="col">Name</th>
                             <th scope="col">Date</th>
-                            <th scope="col">Out Flow</th>
                             <th scope="col">In Flow</th>
+                            <th scope="col">Out Flow</th>
 
                         </tr>
 
@@ -106,10 +106,10 @@ $card_number = $summary[$card_index]['number'];
                                         $in_msg = '$'.$tran['transaction_inflow'];
                                     }
                                     
-                                    echo $out_msg.' </span> </li></ul>
+                                    echo $in_msg.' </span> </li></ul>
                                         </td>
                                         <td>
-                                            <ul><li> <span class=""> '.$in_msg.' </span> </li></ul>
+                                            <ul><li> <span class=""> '.$out_msg.' </span> </li></ul>
                                         </td>
                                         </tr>';
                                 }
@@ -120,10 +120,10 @@ $card_number = $summary[$card_index]['number'];
                             <td><a href="Edit.php?trans=NEW" class="thm-btn">add</a></td>
                             <td></td>
                             <td><span class="total">Total:</span>
-                                <ul> <span>$<?php echo $total_out?></span> </ul>
+                                <ul> <span>$<?php echo $total_in?></span> </ul>
                             </td>
                             <td><span class="total">Total:</span>
-                                <ul> <span>$<?php echo $total_in?></span> </ul>
+                                <ul> <span>$<?php echo $total_out?></span> </ul>
                             </td>
                         </tr>
                     </tbody>
