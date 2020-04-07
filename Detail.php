@@ -1,6 +1,7 @@
 <?php
 require('db_fetch.php');
-$this_card_id = $_GET['card'];
+//$this_card_id = $_GET['card'];
+$this_card_id = !empty($_GET['card']) ? $_GET['card'] : $_COOKIE['this_card_id'];;
 setcookie('this_card_id', $this_card_id);
 $this_trans = array();
 $total_in = 0;
@@ -13,8 +14,9 @@ for ($i=0; $i<sizeof($card_res); $i++)
         $total_out=$total_out+$card_res[$i]['transaction_outflow'];
     }
 }
-$card_index = array_search($tmp['card_id'],$mapping);
+$card_index = array_search($this_card_id,$mapping);
 $card_number = $summary[$card_index]['number'];
+$card_name = $summary[$card_index]['name'];
 ?>
 <html>
 
@@ -58,7 +60,13 @@ $card_number = $summary[$card_index]['number'];
     <div class="container">
         <br>
         <section>
-            <h2>Card</h2>
+        <table>
+                <tr>
+                    <td><h2><?php echo $card_name?></h2></td>
+                    <td style="width:800px;text-align:right">
+                    <a href="Card_Edit.php?card= <?php echo $this_card_id ?>" class="thm-btn">edit</a></td>
+                </tr>
+            </table>
             <caption class="accessible"><?php echo $card_number?></caption>
         </section>
         <hr>

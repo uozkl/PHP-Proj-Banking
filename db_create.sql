@@ -15,7 +15,7 @@ create table card_info(
 card_id int,
 user_id int,
 card_type varchar,
-card_number int,
+card_number varchar,
 primary key (card_id)
 );
 

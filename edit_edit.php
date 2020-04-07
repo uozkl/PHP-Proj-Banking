@@ -32,7 +32,6 @@ if ($outflow!="") {
     $query = $query.",transaction_dest='$dest'";
 }
 $query = $query." where transaction_id=$id";
-//print_r($query);
 //$query = "UPDATE transaction_info SET transaction_type='$type',transaction_outflow='$outflow',transaction_inflow='$inflow' where transaction_id=$id";
 
 pg_query($db_connection, $query);

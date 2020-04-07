@@ -20,7 +20,7 @@ $summary = array();
 $mapping = array();
 
 for ($i=0; $i<sizeof($card_info_res); $i++) {
-    array_push($summary, array("type"=>$card_info_res[$i]['card_type'],"number"=>$card_info_res[$i]['card_number'],"balance"=>0,"id"=>$card_info_res[$i]['card_id']));
+    array_push($summary, array("type"=>$card_info_res[$i]['card_type'],"number"=>$card_info_res[$i]['card_number'],"balance"=>0,"id"=>$card_info_res[$i]['card_id'],"name"=>$card_info_res[$i]['card_institution']));
     array_push($mapping, $card_info_res[$i]['card_id']);
 }
 

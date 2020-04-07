@@ -71,7 +71,7 @@ require('db_fetch.php');
                                         <tr>
                                         <th scope="row">
                                             <a href="Detail.php?card='.$summary[$i]['id'] .'">
-                                                Account '.$summary[$i]['id'].'</span></a>
+                                                '.$summary[$i]['name'].'</span></a>
                                             <br>
                                             <span> '. $summary[$i]['number'].' </span>
                                         </th>
@@ -114,7 +114,7 @@ require('db_fetch.php');
                                         <tr>
                                         <th scope="row">
                                             <a href="Detail.php?card='.$summary[$i]['id'] .'">
-                                                Account '.$summary[$i]['id'].'</span></a>
+                                                '.$summary[$i]['name'].'</span></a>
                                             <br>
                                             <span> '. $summary[$i]['number'].' </span>
                                         </th>
@@ -156,7 +156,7 @@ require('db_fetch.php');
                                         <tr>
                                         <th scope="row">
                                             <a href="Detail.php?card='.$summary[$i]['id'] .'">
-                                                account '.$summary[$i]['id'].'</span></a>
+                                            '.$summary[$i]['name'].'</span></a>
                                             <br>
                                             <span> '. $summary[$i]['number'].' </span>
                                         </th>
@@ -199,7 +199,7 @@ require('db_fetch.php');
                                         <tr>
                                         <th scope="row">
                                             <a href="Detail.php?card='.$summary[$i]['id'] .'">
-                                                account '.$summary[$i]['id'].'</span></a>
+                                                '.$summary[$i]['name'].'</span></a>
                                             <br>
                                             <span> '. $summary[$i]['number'].' </span>
                                         </th>

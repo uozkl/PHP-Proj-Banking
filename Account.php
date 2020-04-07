@@ -3,6 +3,7 @@ require('db_fetch.php');
 $is_male = $account_res[0]['user_gender']=="Male";
 $is_female = $account_res[0]['user_gender']=="Female";
 $is_others = $account_res[0]['user_gender']=="Others";
+
 ?>
 <html>
 
@@ -104,77 +105,49 @@ $is_others = $account_res[0]['user_gender']=="Others";
             </form>
         </div>
         <section>
-            <h2>My Cards</h2>
+            <table>
+                <tr>
+                    <td><h2>My Cards</h2></td>
+                    <td style="width:1000px;text-align:right">
+                    <a href="Card_Edit.php?card=NEW" class="thm-btn">add</a></td>
+                </tr>
+            </table>
             <caption class="accessible">Card link to my account</caption>
         </section>
         <hr>
         <table class="table">
             <tbody>
                 <tr class="accessible">
-                    <th scope="col">Account Name</th>
-                    <th scope="col">Institution</th>
+                    <th scope="col">Card Name</th>
+                    <th scope="col">Balance</th>
                 </tr>
                 <tr>
-                    <th scope="row">
-                        <a href="Detail.php">
-                            Credit card 1</span></a>
-                        <br>
-                        <span> Visa 4444******** 9999 </span>
-                    </th>
-                    <td>
-                        <ul>
-                            <li> <span class=""> Bank of XXXX </span> </li>
-                        </ul>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">
-                        <a href="Detail.php">
-                            Credit card 2</span></a>
-                        <br>
-                        <span> Visa 4444******** 9999 </span>
-                    </th>
-                    <td>
-                        <ul>
-                            <li> <span class=""> XXX Bank </span> </li>
-                        </ul>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">
-                        <a href="Detail.php">
-                            Credit card 3</span></a>
-                        <br>
-                        <span> Visa 4444******** 9999 </span>
-                    </th>
-                    <td>
-                        <ul>
-                            <li> <span class=""> YYY Bank </span> </li>
-                        </ul>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">
-                        <a href="Detail.php">
-                            Credit card 4</span></a>
-                        <br>
-                        <span> Visa 4444******** 9999 </span>
-                    </th>
-                    <td>
-                        <ul>
-                            <li> <span class=""> Bank of YYY </span> </li>
-                        </ul>
-                    </td>
+
+                    <?php
+                                for ($i=0; $i<sizeof($summary); $i++)
+                                {
+                                    
+                                        echo '                            
+                                        <tr>
+                                        <th scope="row">
+                                            <a href="Detail.php?card='.$summary[$i]['id'] .'">
+                                                '.$summary[$i]['name'].'</span></a>
+                                            <br>
+                                            <span> '. $summary[$i]['number'].' </span>
+                                        </th>
+                                        <td>
+                                            <ul>
+                                                <li> <span class=""> $'. $summary[$i]['balance']. ' </span> </li>
+                                            </ul>
+                                        </td>
+                                    </tr>';
+                                    
+                                }
+                            ?>
                 </tr>
             </tbody>
         </table>
-        <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="form-group">
-                <input id="form_botcheck" name="form_botcheck" class="form-control" type="hidden" value="">
-                <a href="Main.php" onclick="alert('Change Saved')" class="thm-btn2">Save</a>
-                <button class="thm-btn2" onclick="btn_exit()">Cancel</button>
-            </div>
-        </div>
+
     </div>
     <section class="footer-bottom">
         <div class="container">

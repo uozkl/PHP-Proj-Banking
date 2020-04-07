@@ -1,19 +1,20 @@
 <?php
 require('db_fetch.php');
-//$this_trans_id = $_GET['trans'];
-$this_trans_id = !empty($_GET['trans']) ? $_GET['trans'] : $_COOKIE['this_tran_id'];;
-if ($this_trans_id=="NEW") {
-    $this_trans_id=0;
+$this_card_id = $_GET['card'];
+if ($this_card_id=="NEW") {
+    $this_card_id=0;
 }
-setcookie('this_tran_id', $this_trans_id);
-$tran_info = pg_fetch_all(pg_query($db_connection, "select * from transaction_info where transaction_id= $this_trans_id"))[0];
-//print_r($tran_info);
-$format_date = substr($tran_info['transaction_date'], 0, 4).'-'.substr($tran_info['transaction_date'], 4, 2).'-'.substr($tran_info['transaction_date'], 6, 2);
+setcookie('this_card_id', $this_card_id);
+$card_info = pg_fetch_all(pg_query($db_connection, "select * from card_info where card_id= $this_card_id"))[0];
+$is_credit = $card_info['card_type']=="Credit";
+$is_cash = $card_info['card_type']=="Cash";
+$is_saving = $card_info['card_type']=="Savings";
+$is_loan = $card_info['card_type']=="Loan";
 
 ?>
 <html>
-<style>
-.thm-btndel {
+ <style>
+    .thm-btndel {
     position: relative;
     background: transparent;
     font-size: 14px;
@@ -77,60 +78,35 @@ $format_date = substr($tran_info['transaction_date'], 0, 4).'-'.substr($tran_inf
                 <div class="col-md-6 col-sm-12 col-xs-12">
                     <div class="section-title">
                         <br>
-                        <h3>Edit your transition record</h3>
+                        <h3>Edit your card details</h3>
                     </div>
                     <div class="default-form-area">
-                        <form id="contact-form" name="contact_form" class="default-form" action="edit_edit.php" method="post"
+                        <form id="contact-form" name="contact_form" class="default-form" action="card_update.php" method="post"
                             novalidate="novalidate">
                             <div class="row clearfix">
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-
                                     <div class="form-group">
-                                        <h3>Transition Date</h3>
-                                        <input type="date" name="trans_date" class="form-control" value="<?php echo $format_date?>"
-                                            placeholder="Transition Date" required="" aria-required="true">
+                                        <h3>Card Institution</h3>
+                                        <input type="text" name="card_name" class="form-control" value="<?php echo $card_info['card_institution']?>"
+                                            placeholder="Name of transaction" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <div class="form-group">
-                                        <h3>Transition Name</h3>
-                                        <input type="text" name="trans_name" class="form-control" value="<?php echo $tran_info['transaction_name']?>"
-                                            placeholder="Name of transaction">
+                                        <h3>Card Number</h3>
+                                        <input type="text" name="card_number" class="form-control" value="<?php echo $card_info['card_number']?>"
+                                            placeholder="Type of transaction" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <div class="form-group">
-                                        <h3>Transition Type</h3>
-                                        <input type="text" name="trans_type" class="form-control" value="<?php echo $tran_info['transaction_type']?>"
-                                            placeholder="Type of transaction">
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <div class="form-group">
-                                        <h3>Source/Destination</h3>
-                                        <input type="text" name="source_des" class="form-control" value="<?php echo $tran_info['transaction_dest']?>"
-                                            placeholder="To/From ...">
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <div class="form-group">
-                                        <h3>In Flow</h3>
-                                        <input type="number" name="in_flow" class="form-control" value="<?php echo $tran_info['transaction_inflow']?>"
-                                            placeholder="0.0">
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <div class="form-group">
-                                        <h3>Out Flow</h3>
-                                        <input type="number" name="out_flow" class="form-control" value="<?php echo $tran_info['transaction_outflow']?>"
-                                            placeholder="0.0">
-                                    </div>
-                                </div>
-                                <div class="col-md-12 col-sm-12 col-xs-12">
-                                    <div class="form-group">
-                                        <H3>Note</H3>
-                                        <textarea name="form_message" class="form-control textarea required"
-                                            placeholder="Your Message...." aria-required="true"><?php echo $tran_info['transaction_note']?></textarea>
+                                        <h3>Type of Card</h3>
+                                        <select name="card_type" value = "Female">
+                                            <option value="Credit" <?php if($is_credit){echo "selected";}?>>Credit</option>
+                                            <option value="Cash" <?php if($is_cash){echo "selected";}?>>Cash</option>
+                                            <option value="Savings" <?php if($is_saving){echo "selected";}?>>Savings</option>
+                                            <option value="Loan" <?php if($is_loan){echo "selected";}?>>Loan</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-md-12 col-sm-12 col-xs-12">
@@ -139,7 +115,7 @@ $format_date = substr($tran_info['transaction_date'], 0, 4).'-'.substr($tran_inf
                                             type="hidden" value="">
                                         <button class="thm-btn2" type="submit">Save</button>
                                         <button class="thm-btn2" type="button" onclick="btn_exit()">Cancel</button>
-                                        <?php if ($this_trans_id!=0) {echo '<button class="thm-btndel" type="button" onclick="btn_del()">Delete</button>';}?>
+                                        <?php if ($this_card_id!=0) {echo '<button class="thm-btndel" type="button" onclick="btn_del()">Delete</button>';}?>
                                     </div>
                                 </div>
                             </div>
@@ -177,14 +153,14 @@ $format_date = substr($tran_info['transaction_date'], 0, 4).'-'.substr($tran_inf
         var r = confirm("Do you really want to cancel your changes?")
         if (r == true) {
             window.event.returnValue = false;
-            window.location.href = "Detail.php";
+            window.location.href = "<?php if ($this_card_id==0) {echo 'Account.php';}else{echo 'Detail.php?card='.$this_card_id;}?>";
         }
     }
     function btn_del() {
-        var r = confirm("Do you really want to delete this record?")
+        var r = confirm("Do you really want to delete this record? This will also delete all transactions under this card!")
         if (r == true) {
             window.event.returnValue = false;
-            window.location.href = "edit_del.php";
+            window.location.href = "card_del.php";
         }
     }
 </script>
