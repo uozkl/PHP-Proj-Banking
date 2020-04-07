@@ -38,7 +38,7 @@ $card_number = $summary[$card_index]['number'];
                 </div>
                 <div class="col-right float_right">
                     <div class="link">
-                        <a href="Account.html" class="thm-btn">My account</a>
+                        <a href="Account.php" class="thm-btn">My account</a>
                     </div>
                 </div>
             </div>

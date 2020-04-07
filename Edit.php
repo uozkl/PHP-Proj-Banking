@@ -53,7 +53,7 @@ $format_date = substr($tran_info['transaction_date'], 0, 4).'-'.substr($tran_inf
                 </div>
                 <div class="col-right float_right">
                     <div class="link">
-                        <a href="Account.html" class="thm-btn">My account</a>
+                        <a href="Account.php" class="thm-btn">My account</a>
                     </div>
                 </div>
             </div>
