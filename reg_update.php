@@ -10,13 +10,14 @@ $gender = $_POST['gender'];
 $telephone = $_POST['tlPhone'];
 $address = $_POST['address'];
 $email = $_POST['email'];
-
+// Calculates the number of registered accounts.
 $max_id = pg_fetch_all(pg_query($db_connection, "SELECT MAX(user_id) FROM account"))[0]['max'];
 $result = (string)((int)$max_id+1);
-
+// Registers the newly created account into DB.
 $query = "INSERT INTO account(user_id, user_name, user_passwd, user_fname, user_lname, user_gender, user_tel, user_address, user_email) VALUES ('$result', '$username', '$password', '$firstname', '$lastname', '$gender', '$telephone', '$address', '$email')";
-
+// Checks if registration is successful.
 if (pg_query($db_connection, $query)){
+    // Displays message and redirects.
 	echo "<script type='text/javascript'>alert('Successful')</script>";
 	echo "<script> window.location.href = 'Login_Page.php' </script>";
 } else{
