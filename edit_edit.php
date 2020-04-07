@@ -1,12 +1,17 @@
 <?php
+// This is the proccessing file for the form in Edit.php is submited.
+
 require('db_connect.php');
 // Assigning POST values to variables.
 $this_card_id = $_COOKIE['this_card_id'];
 
+// Sets variables for query.
 $date = date('Ymd', strtotime($_POST['trans_date']));
 $name = $_POST['trans_name'];
+// Updates the transaction_info table in DB.
 $query = "UPDATE transaction_info SET transaction_date='$date',transaction_name='$name'";
 
+// Transaction ID.
 $id = $_COOKIE['this_tran_id'];
 if ($id=="0") {
     $max_id = pg_fetch_all(pg_query($db_connection, "SELECT MAX(transaction_id) FROM transaction_info"))[0]['max'];
@@ -15,6 +20,7 @@ if ($id=="0") {
     $query = $query.",card_id='$this_card_id'";
 }
 
+// Prepare the query for each column.
 $inflow = $_POST['in_flow'];
 if ($inflow!="") {
     $query = $query.",transaction_inflow='$inflow'";
@@ -32,9 +38,8 @@ if ($outflow!="") {
     $query = $query.",transaction_dest='$dest'";
 }
 $query = $query." where transaction_id=$id";
-//print_r($query);
-//$query = "UPDATE transaction_info SET transaction_type='$type',transaction_outflow='$outflow',transaction_inflow='$inflow' where transaction_id=$id";
 
+// Query execution.
 pg_query($db_connection, $query);
 echo "<script type='text/javascript'>alert('Record Saved')</script>";
 echo "<script> window.location.href = 'Detail.php?card=".strval($this_card_id)."' </script>";

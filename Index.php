@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html>
+<!-- 
+This is the first page you see after launch.
+It is a welcome page.
+-->
 
 <head>
   <style>
@@ -65,16 +69,21 @@
 </head>
 
 <body>
+  <!-- Back ground image; Source is folder /Image -->
   <div class="bgIMG">
+    <!-- The middle of the page. -->
     <div class="middle">
       <div>
+      <!-- The logo located in the center of the page. -->
       <img src="image/logo3.PNG" style="width: 500px;">
       <hr>
+      <!-- Login button -->
       <button type="toLoginBTN" onclick="btn_login()">Login</button>
     </div>
     </div>
   </div>
 </body>
+<!-- JS for page redirection for login button. -->
 <script>
   function btn_login() {
           window.location.href = "Login_Page.php";

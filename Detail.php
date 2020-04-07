@@ -1,10 +1,13 @@
 <?php
 require('db_fetch.php');
+// Gets the card ID so we know which card it is.
 $this_card_id = $_GET['card'];
 setcookie('this_card_id', $this_card_id);
+// Variable initialization.
 $this_trans = array();
 $total_in = 0;
 $total_out = 0;
+// Loops over all transactions of the card and calculates total inflow/outlfow.
 for ($i=0; $i<sizeof($card_res); $i++)
 {
     if($card_res[$i]["card_id"]==$this_card_id){
@@ -17,14 +20,16 @@ $card_index = array_search($tmp['card_id'],$mapping);
 $card_number = $summary[$card_index]['number'];
 ?>
 <html>
-
+<!-- Card detail -->
 <head>
     <title>Detailed list</title>
+    <!-- CSS stylesheet -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
 </head>
 
 <body>
+    <!-- The top UI component that displays a welcome message and the MY ACCOUNT link. -->
     <header class="top-bar">
         <div class="container">
             <div class="clearfix">
@@ -38,12 +43,14 @@ $card_number = $summary[$card_index]['number'];
                 </div>
                 <div class="col-right float_right">
                     <div class="link">
+                        <!-- Page redirection -->
                         <a href="Account.php" class="thm-btn">My account</a>
                     </div>
                 </div>
             </div>
         </div>
     </header>
+    <!-- The section that diplays the logo under the top bar. -->
     <section class="theme_menu stricky slideIn animated">
         <div class="container">
             <div class="row">
@@ -55,6 +62,7 @@ $card_number = $summary[$card_index]['number'];
             </div>
         </div>
     </section>
+    <!-- The container that contains the main content of the page. -->
     <div class="container">
         <br>
         <section>
@@ -63,11 +71,13 @@ $card_number = $summary[$card_index]['number'];
         </section>
         <hr>
         <div>
+            <!-- Page title -->
             </section>
             <h3>Current Balance</h3>
             <h4>$<?php echo $total_in-$total_out?></h4>
             </section>
             <br>
+            <!-- List of all the transactions for this card. -->
             <section id="transactionList">
                 <div class="accTableHeader">
                     <h3> Transactions </h3>
@@ -82,7 +92,10 @@ $card_number = $summary[$card_index]['number'];
                             <th scope="col">Out Flow</th>
 
                         </tr>
-
+                            <!-- 
+                                Fetch data from DB to display card info. 
+                                Variables refer to db_fetch.php
+                            -->
                             <?php
                                 for ($i=0; $i<sizeof($this_trans); $i++)
                                 {
@@ -115,13 +128,15 @@ $card_number = $summary[$card_index]['number'];
                                 }
                             ?>
 
-
+                        <!-- The total balance for all the transactions. -->          
                         <tr class="totalRow">
                             <td><a href="Edit.php?trans=NEW" class="thm-btn">add</a></td>
                             <td></td>
+                            <!-- Total inflow -->
                             <td><span class="total">Total:</span>
                                 <ul> <span>$<?php echo $total_in?></span> </ul>
                             </td>
+                            <!-- Total outflow -->
                             <td><span class="total">Total:</span>
                                 <ul> <span>$<?php echo $total_out?></span> </ul>
                             </td>
@@ -131,12 +146,17 @@ $card_number = $summary[$card_index]['number'];
             </section>
         </div>
         </div>
+        <!-- The bottom UI section that contains copyright and other info. -->
         <section class="footer-bottom">
             <div class="container">
+                <!-- Left section -->
                 <div class="pull-left copy-text">
+                    <!-- Copyright -->
                     <p>Copyright © 20XX. Some Company name All rights reserved.</p>
                 </div>
+                <!-- Right section -->
                 <div class="pull-right get-text">
+                    <!-- Support, privacy, terms -->
                     <ul>
                         <li><a href="#" onclick="alert('Work in progress')">Support |  </a></li>
                         <li><a href="#" onclick="alert('Work in progress')">Privacy &amp; Policy |</a></li>

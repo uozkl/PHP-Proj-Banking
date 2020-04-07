@@ -3,6 +3,7 @@ require('db_connect.php');
 ?>
 <!DOCTYPE html>
 <html>
+<!-- Login page -->
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
@@ -78,20 +79,26 @@ require('db_connect.php');
   </head>
 
   <body>
+    <!-- Back ground image; Source is folder /Image -->
     <div class = "bgimg">
-
+      <!-- The light blue container that contains the login form. -->
       <div class="container" style="background-color:#f5f9f7">
         <h2>LOGIN</h2>
+        <!-- Login form -->
         <form method="post">
+        <!-- Username label and input box. -->
         <label for="uName"><b>Username</b></label>
           <br>
           <input type="text" placeholder="Enter Username" name="uName" value = "" required>
         <br>
+        <!-- Password label and input box. -->
           <label for="pWord"><b>Password</b></label>
           <br>
           <input type="password" placeholder="Enter Password" name="pWord" required>
         <br>
+        <!-- Login button -->
         <input type="submit" value="Login">
+        <!-- Register link -->
         <span class="rgs"> <a href="Register.php">Need an account?</a></span>
         </form>
       </div>
@@ -110,17 +117,20 @@ require('db_connect.php');
         $result = pg_query($db_connection, $query) or die(pg_error($db_connection));
         $count = pg_num_rows($result);
     
+        // Verifies login credentials, if true:
         if ($count == 1) {
         
-    //echo "Login Credentials verified";
+            // Shows login successful and sets cookies.
             echo "<script type='text/javascript'>alert('Login Credentials verified')</script>";
             setcookie('this_id', pg_fetch_all($result)[0]['user_id']);
         
+            // Page redirection.
             echo "<script> window.location.href = 'Main.php' </script>";
-        } else {
+        } else { // If false:
+            // Displays login fail message.
             echo "<script type='text/javascript'>alert('Invalid Login Credentials')</script>";
+            // Stay on this page.
             echo "<script> window.location.href = 'Login_Page.php' </script>";
-            //echo "Invalid Login Credentials";
         }
     }
     ?>
